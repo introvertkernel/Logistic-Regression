@@ -52,10 +52,14 @@
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
+<<<<<<< HEAD
             },
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
             "cppStandard": "c++17"
+=======
+            }
+>>>>>>> 29d5cf4510d8e61a986e8338dc1fb3fdda83e064
         },
         {
             "name": "Win32",

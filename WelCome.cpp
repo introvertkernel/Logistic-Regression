@@ -79,6 +79,10 @@ int main( int argc, char** argv )
     glutReshapeFunc(myreshape2); 
     glutDisplayFunc(redisplay); 
     //glutKeyboardFunc(keyboard1); 
+<<<<<<< HEAD
     glutMainLoop(); 
+=======
+    glutMainLoop(  ); 
+>>>>>>> 29d5cf4510d8e61a986e8338dc1fb3fdda83e064
     return(0);    // This line is never reached. 
 }
