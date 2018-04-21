@@ -65,12 +65,6 @@ float x,y,u,blend;
 		glVertex2f(56, 69);
 		glVertex2f(43, 47);
 
-
-		glVertex2f(78, 68);
-		glVertex2f(86, 56);
-		glVertex2f(82, 54);
-		glVertex2f(56, 69);
-
 	glEnd();
 		// Simple try
 		// for(int g=10,h=80;g<80,h<150;g++,h++)
@@ -113,9 +107,9 @@ float x,y,u,blend;
 void myinit()
 {
 	glClearColor(1.0,1.0,1.0,1.0);
-		glColor3f(1.0,0.0,0.0);
-		glPointSize(5.0);
-		gluOrtho2D(0.0,320.0,0.0,300.0);
+	glColor3f(1.0,0.0,0.0);
+	glPointSize(5.0);
+	gluOrtho2D(0.0,320.0,0.0,300.0);
 }
 void motion(void)
 {
@@ -123,23 +117,23 @@ void motion(void)
 	bzco[1][1]+=s1y;
 	bzco[2][0]+=s2x;
 	bzco[2][1]+=s2y;
-if(bzco[1][0]<0||bzco[1][0]>320)
-{
-	s1x=-s1x;
-}
-if(bzco[1][1]<0||bzco[1][1]>300)
-{
-	s1y=-s1y;
-}
-if(bzco[2][0]<0||bzco[2][0]>320)
-{
-	s2x=-s2x;
-}
-if(bzco[2][1]<0||bzco[2][1]>300)
-{
-	s2y=-s2y;
-}
-glutPostRedisplay();
+	if(bzco[1][0]<0||bzco[1][0]>320)
+	{
+		s1x=-s1x;
+	}
+	if(bzco[1][1]<0||bzco[1][1]>300)
+	{
+		s1y=-s1y;
+	}
+	if(bzco[2][0]<0||bzco[2][0]>320)
+	{
+		s2x=-s2x;
+	}
+	if(bzco[2][1]<0||bzco[2][1]>300)
+	{
+		s2y=-s2y;
+	}
+	glutPostRedisplay();
 }
 int main(int argc, char ** argv)
 {
