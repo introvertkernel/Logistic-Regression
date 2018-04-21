@@ -9,17 +9,15 @@ void bezierCoefficients(int n,int *c)
 	for(k=0;k<=n;k++)
 	{
 		c[k]=1;
-        //int ga,gb=0,gx=1;
+        
 		for(i=n;i>=k+1;i--)
 		    c[k]*=i;
+		
             //c[k] = 1 / (1+ exp (i));
 		
-		//c[k]=1;
-
 		for(i=n-k;i>=2;i--)
 			c[k]/=i;
-                        //c[k] = 1 / (1+ exp (i));
-
+		
 
 
 
@@ -42,6 +40,48 @@ int k;
 float x,y,u,blend;
 
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	// To draw points
+	glColor3f(0.0,1.0,0.0);
+	glPointSize(3);
+    glBegin(GL_POINTS);
+        glVertex2f(80, 34);
+	    glVertex2f(85, 24);
+		glVertex2f(78, 24);
+		glVertex2f(46, 35);
+		glVertex2f(67, 47);
+		glVertex2f(85, 26);
+		glVertex2f(78, 68);
+		glVertex2f(86, 56);
+		glVertex2f(82, 54);
+		glVertex2f(56, 69);
+	glEnd();
+
+	glColor3f(1.0,0.0,0.0);
+	glPointSize(3);
+	glBegin(GL_POINTS);
+		glVertex2f(34, 38);
+		glVertex2f(46, 35);
+		glVertex2f(56, 69);
+		glVertex2f(43, 47);
+
+
+		glVertex2f(78, 68);
+		glVertex2f(86, 56);
+		glVertex2f(82, 54);
+		glVertex2f(56, 69);
+
+	glEnd();
+		// Simple try
+		// for(int g=10,h=80;g<80,h<150;g++,h++)
+		// {	g=g-2;
+		// 	h=h+3;
+		// 	glVertex2f(80, g);
+		// 	h=h-2;
+		// 	g=g+3;
+		// }
+
+
 	glColor3f(0.0,0.0,1.0);
 	glLineWidth(3.0);
 	glBegin(GL_LINE_STRIP);
@@ -109,6 +149,7 @@ int main(int argc, char ** argv)
 
 	glutCreateWindow("Logistic Function");
 	glutDisplayFunc(display);
+	glutDisplayFunc(display);
 	glutIdleFunc(motion);
 	myinit();
 	bezierCoefficients(n,c);
@@ -117,3 +158,7 @@ int main(int argc, char ** argv)
 	return 0;
 
 }
+
+/*
+1. In main calling glutDisplayFunc more than 0nce works
+*/
