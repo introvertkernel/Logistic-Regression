@@ -4,13 +4,12 @@ void myreshape2 (int w, int h);
 void initOpenGL();
 void keyboard(unsigned char key,int x,int y);
 void func1(void);
-#include <math.h>        // For math routines (such as sqrt & trig). 
-#include <stdio.h> 
-#include <GL/glut.h> 
+#include<math.h>        // For math routines (such as sqrt & trig). 
+#include<stdio.h> 
+#include<GL/glut.h> 
 #include<string.h>
 
 static int flag=1,l,m,w,aspectRatio;
-
 
 void *fonts[]=
 {
