@@ -1,3 +1,4 @@
+#include "Output.h"
 #include<GL/glut.h>
 #include<math.h>
 #include<stdio.h>
@@ -33,7 +34,7 @@ void bezierCoefficients(int n,int *c)
 	}
 }
 
-void display(void)
+void display1(void)
 {
 int k;
 
@@ -135,15 +136,14 @@ void motion(void)
 	}
 	glutPostRedisplay();
 }
-int main(int argc, char ** argv)
+int function()
 {
-	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
 	glutInitWindowSize(320,300);
 
 	glutCreateWindow("Logistic Function");
-	glutDisplayFunc(display);
-	glutDisplayFunc(display);
+	glutDisplayFunc(display1);
+//	glutDisplayFunc(display);
 	glutIdleFunc(motion);
 	myinit();
 	bezierCoefficients(n,c);
@@ -152,6 +152,14 @@ int main(int argc, char ** argv)
 	return 0;
 
 }
+// int main(int argc, char ** argv)
+// {
+// 	glutInit(&argc,argv);
+// 	function();	
+
+
+// 	return 0;
+// }
 
 /*
 1. In main calling glutDisplayFunc more than 0nce works
