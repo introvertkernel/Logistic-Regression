@@ -78,10 +78,10 @@ void page2()
     print(380,560,"~~~~~~",fonts[2]);
     glColor3f(0.6,0.3,0.7);
    
-    print(100,400,"1 -> Pictorial reprsentation",fonts[2]);
-   // print(100,350,"2 -> Help",fonts[2]);
+    print(100,400,"1 -> Logistic Regresion",fonts[2]);
+    print(100,350,"2 -> Simulation",fonts[2]);
    // print(100,300,"3 -> Start",fonts[2]);
-    print(100,250,"4 -> Quit",fonts[2]);
+    print(100,250,"3 -> Quit",fonts[2]);
     print(400,150," Press 'b' to go back",fonts[2]);
 }
 
@@ -133,10 +133,10 @@ void key(unsigned char key, int x, int y)
         case '2': flag=4;
                 glutPostRedisplay();
                 break;
-        case '3': flag=5;
-                glutPostRedisplay();
-                break;
-        case '4': exit(0);
+        // case '3': flag=5;
+        //         glutPostRedisplay();
+        //         break;
+        case '3': exit(0);
         case 'b': flag=1;
                  glutPostRedisplay();
                  break;
@@ -175,6 +175,7 @@ void init(void)
 //   cone = gluNewQuadric();
 //   qsphere = gluNewQuadric();
 }
+
 void click(int id)
 {
     switch(id)
@@ -250,7 +251,6 @@ int main(int argc, char *argv[])
     glutMainLoop();
     return 0;
 }
-
 
 
 
