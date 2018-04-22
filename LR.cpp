@@ -211,8 +211,14 @@ void display()
     else if(flag==3)
     {
         page3();
-  		glPointSize(5.0);
-   		gluOrtho2D(0.0,350.0,0.0,550.0);
+  		// glPointSize(5.0);
+   		// gluOrtho2D(0.0,350.0,0.0,550.0);
+    }
+    else if(flag==4)
+    {
+        page3();
+  		// glPointSize(5.0);
+   		// gluOrtho2D(0.0,350.0,0.0,550.0);
     }
     
     else if(flag==5)
