@@ -81,7 +81,7 @@ void page2()
     print(100,400,"1 -> Logistic Regresion",fonts[2]);
     print(100,350,"2 -> Simulation",fonts[2]);
    // print(100,300,"3 -> Start",fonts[2]);
-    print(100,250,"3 -> Quit",fonts[2]);
+    print(100,300,"3 -> Quit",fonts[2]);
     print(400,150," Press 'b' to go back",fonts[2]);
 }
 
@@ -133,10 +133,9 @@ void key(unsigned char key, int x, int y)
         case '2': flag=4;
                 glutPostRedisplay();
                 break;
-        // case '3': flag=5;
-        //         glutPostRedisplay();
-        //         break;
         case '3': exit(0);
+                break;
+        // case '3': exit(0);
         case 'b': flag=1;
                  glutPostRedisplay();
                  break;
@@ -192,7 +191,7 @@ void click(int id)
 void display()
 {
     glClearColor(1.0,1.0,1.0,1.0);
-   //s glutFullScreen();
+    // glutFullScreen();
    
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
