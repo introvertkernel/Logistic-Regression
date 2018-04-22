@@ -205,12 +205,6 @@ void page4()
 
 	glFlush();
 	glutSwapBuffers();
-
-    // glutIdleFunc(motion);
-	// myinit();
-	// bezierCoefficients(n,c);
-	// s1x=-1;s1y=-1;s2x=-1;s2y=1;
-    
 }
 
 
@@ -303,8 +297,6 @@ void init(void)
     glEnable(GL_CULL_FACE);
     glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 
-    //   cone = gluNewQuadric();
-    //   qsphere = gluNewQuadric();
 }
 
 void click(int id)
@@ -349,26 +341,8 @@ void display()
     else if(flag==4)
     {
         function();
-        // page4();
-        //motion();
-        // glutIdleFunc(motion);
-        // init();
-        // bezierCoefficients(n,c);
-        // s1x=-1;s1y=-1;s2x=-1;s2y=1;
   		// glPointSize(5.0);
    		// gluOrtho2D(0.0,350.0,0.0,550.0);
-    }
-    
-    else if(flag==5)
-    {
-        glutReshapeFunc(reshape);
-        glutKeyboardFunc(key);
-        init();
-        glutCreateMenu(click);
-        // glutAddMenuEntry("Toggle Views",1);
-        // glutAddMenuEntry("-------",0);            
-        glutAddMenuEntry("Exit",1);
-        glutAttachMenu(GLUT_RIGHT_BUTTON);
     }
     glFlush();
     glutSwapBuffers();
