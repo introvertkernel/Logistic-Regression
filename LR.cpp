@@ -4,12 +4,18 @@ void myreshape2 (int w, int h);
 void initOpenGL();
 void keyboard(unsigned char key,int x,int y);
 void func1(void);
+
+void motion(void);
+void myinit();
+void myreshape2 (int w, int h);
 #include <math.h>        // For math routines (such as sqrt & trig). 
 #include <stdio.h> 
 #include <GL/glut.h> 
 #include<string.h>
 
 static int flag=1,l,m,w,aspectRatio;
+int bzco[4][2]={{0,0},{49,201},{201,99},{320,300}},c[4],n=3;
+int s1x,s1y,s2x,s2y;
 
 
 void *fonts[]=
@@ -18,6 +24,36 @@ void *fonts[]=
     GLUT_BITMAP_TIMES_ROMAN_10,
     GLUT_BITMAP_TIMES_ROMAN_24,
 };
+
+void bezierCoefficients(int n,int *c)
+{
+	int k,i;
+	for(k=0;k<=n;k++)
+	{
+		c[k]=1;
+        
+		for(i=n;i>=k+1;i--)
+		    c[k]*=i;
+		
+            //c[k] = 1 / (1+ exp (i));
+		
+		for(i=n-k;i>=2;i--)
+			c[k]/=i;
+		
+
+
+
+            /*x <- c(-10:10)
+            b = 0 # intercept
+            m = 1 # slope
+            y <- exp((b + m*x)) / (1 + exp((b + m*x))
+            */
+
+           /*
+           c[k] = exp((gb + i*gx)) / (1 + exp((gb + i*gx)));
+           */
+	}
+}
 
 void print(int x, int y, char *string,void *font)
 {
@@ -88,6 +124,153 @@ void page2()
 void page3()
 {
     glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(1.0,0.0,0.0);
+    glBegin(GL_LINES);
+    glColor3f(0.0,0.0,0.0);
+    glVertex2f(0.0,50.0);
+    glVertex2f(1000.0,50.0);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3f(0.0,0.1,0.5);
+    glVertex2f(10.0,50.0);
+    glVertex2f(30.0,50.0);
+    glVertex2f(30.0,100.0);
+    glVertex2f(10.0,100.0);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3f(0.5,0.6,0.5);
+    glVertex2f(10.0,100.0);
+    glVertex2f(30.0,100.0);
+    glVertex2f(30.0,150.0);
+    glVertex2f(10.0,150.0);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3f(0.6,0.2,0.0);
+    glVertex2f(10.0,150.0);
+    glVertex2f(30.0,150.0);
+    glVertex2f(30.0,200.0);
+    glVertex2f(10.0,200.0);
+    glEnd();
+    glBegin(GL_LINES);
+    glColor3f(0.0,0.0,0.0);
+    glVertex2f(10.0,100.0);
+    glVertex2f(30.0,100.0);
+    glVertex2f(30.0,150.0);
+    glVertex2f(10.0,150.0);
+    glEnd();
+    glFlush();
+}
+
+void page4()
+{
+    int k;
+
+    float x,y,u,blend;
+
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	// To draw points
+	glColor3f(0.0,1.0,0.0);
+	glPointSize(3);
+    glBegin(GL_POINTS);
+        glVertex2f(80, 34);
+	    glVertex2f(85, 24);
+		glVertex2f(78, 24);
+		glVertex2f(46, 35);
+		glVertex2f(67, 47);
+		glVertex2f(85, 26);
+		glVertex2f(78, 68);
+		glVertex2f(86, 56);
+		glVertex2f(82, 54);
+		glVertex2f(56, 69);
+	glEnd();
+
+	glColor3f(1.0,0.0,0.0);
+	glPointSize(3);
+	glBegin(GL_POINTS);
+		glVertex2f(34, 38);
+		glVertex2f(46, 35);
+		glVertex2f(56, 69);
+		glVertex2f(43, 47);
+
+	glEnd();
+		// Simple try
+		// for(int g=10,h=80;g<80,h<150;g++,h++)
+		// {	g=g-2;
+		// 	h=h+3;
+		// 	glVertex2f(80, g);
+		// 	h=h-2;
+		// 	g=g+3;
+		// }
+
+
+	glColor3f(0.0,0.0,1.0);
+	glLineWidth(3.0);
+	glBegin(GL_LINE_STRIP);
+
+	for(u=0;u<1.0;u+=0.001)
+	{x=0;y=0;
+		for(k=0;k<4;k++)
+		{
+			blend=c[k]*pow(u,k)*pow(1-u,n-k);
+			x+=bzco[k][0]*blend;
+			y+=bzco[k][1]*blend;
+		}
+		glVertex2f(x,y);
+
+	}
+	glEnd();
+
+	//moving points
+	
+	// glBegin(GL_POINTS);
+	// glVertex2f(bzco[1][0],bzco[1][1]);
+	// glVertex2f(bzco[2][0],bzco[2][1]);
+	// glEnd();
+	
+
+	glFlush();
+	glutSwapBuffers();
+
+    // glutIdleFunc(motion);
+	// myinit();
+	// bezierCoefficients(n,c);
+	// s1x=-1;s1y=-1;s2x=-1;s2y=1;
+    
+}
+
+void myinit()
+{
+    glutIdleFunc(motion);
+	glClearColor(1.0,1.0,1.0,1.0);
+	glColor3f(1.0,0.0,0.0);
+	glPointSize(5.0);
+	gluOrtho2D(0.0,320.0,0.0,300.0);
+}
+
+void motion(void)
+{
+	bzco[1][0]+=s1x;
+	bzco[1][1]+=s1y;
+	bzco[2][0]+=s2x;
+	bzco[2][1]+=s2y;
+	if(bzco[1][0]<0||bzco[1][0]>320)
+	{
+		s1x=-s1x;
+	}
+	if(bzco[1][1]<0||bzco[1][1]>300)
+	{
+		s1y=-s1y;
+	}
+	if(bzco[2][0]<0||bzco[2][0]>320)
+	{
+		s2x=-s2x;
+	}
+	if(bzco[2][1]<0||bzco[2][1]>300)
+	{
+		s2y=-s2y;
+	}
+	glutPostRedisplay();
 }
 
 // void Reshape1(int w, int h) /*new reshape function for pages*/
@@ -161,18 +344,25 @@ void key(unsigned char key, int x, int y)
 }
 void init(void)
 {
-  static GLfloat lightpos[] = {.5, .75, 1.5, 1};
+    glutIdleFunc(motion);
+    // if(flag == 4){
+    //     glClearColor(1.0,1.0,1.0,1.0);
+    //     glColor3f(1.0,0.0,0.0);
+    //     glPointSize(5.0);
+    //     gluOrtho2D(0.0,320.0,0.0,300.0);
+    // }
+    static GLfloat lightpos[] = {.5, .75, 1.5, 1};
 
-  glEnable(GL_DEPTH_TEST);
-  glEnable(GL_LIGHTING);
-  glEnable(GL_LIGHT0);
-  glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 
-  glEnable(GL_CULL_FACE);
-  glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glEnable(GL_CULL_FACE);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 
-//   cone = gluNewQuadric();
-//   qsphere = gluNewQuadric();
+    //   cone = gluNewQuadric();
+    //   qsphere = gluNewQuadric();
 }
 
 void click(int id)
@@ -216,7 +406,12 @@ void display()
     }
     else if(flag==4)
     {
-        page3();
+        page4();
+        //motion();
+        // glutIdleFunc(motion);
+        init();
+        bezierCoefficients(n,c);
+        s1x=-1;s1y=-1;s2x=-1;s2y=1;
   		// glPointSize(5.0);
    		// gluOrtho2D(0.0,350.0,0.0,550.0);
     }
@@ -245,11 +440,12 @@ int main(int argc, char *argv[])
     glutInitWindowSize(256, 256);
     glutInitWindowPosition(0, 0);
     if (argc > 1) {
-      glutInitDisplayString("samples stencil>=3 rgb depth");
-    } else {
-      glutInitDisplayString("samples stencil>=3 rgb double depth");
+        glutInitDisplayString("samples stencil>=3 rgb depth");
     }
-    glutCreateWindow(argv[0]);
+    else {
+        glutInitDisplayString("samples stencil>=3 rgb double depth");
+    }
+    glutCreateWindow("Logistic Function");
     glutReshapeFunc(myreshape2);
     glutDisplayFunc(display);
     glutKeyboardFunc(key);

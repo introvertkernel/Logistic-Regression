@@ -1,6 +1,12 @@
 #include<GL/glut.h>
 #include<math.h>
 #include<stdio.h>
+
+void bezierCoefficients(int n,int *c);
+void display(void);
+void myinit();
+void motion(void)
+
 int bzco[4][2]={{0,0},{49,201},{201,99},{320,300}},c[4],n=3;
 int s1x,s1y,s2x,s2y;
 void bezierCoefficients(int n,int *c)
@@ -140,7 +146,6 @@ int main(int argc, char ** argv)
 	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
 	glutInitWindowSize(320,300);
-
 	glutCreateWindow("Logistic Function");
 	glutDisplayFunc(display);
 	glutDisplayFunc(display);
