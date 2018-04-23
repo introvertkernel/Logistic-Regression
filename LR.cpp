@@ -341,6 +341,7 @@ int main(int argc, char *argv[])
         glutInitDisplayString("samples stencil>=3 rgb double depth");
     }
     glutCreateWindow("Logistic Function");
+    glutFullScreen();
     glutReshapeFunc(myreshape2);
     glutDisplayFunc(display);
     glutKeyboardFunc(key);

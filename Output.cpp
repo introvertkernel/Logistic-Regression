@@ -142,6 +142,7 @@ int function()
 	glutInitWindowSize(320,300);
 
 	glutCreateWindow("Logistic Function");
+	glutFullScreen();
 	glutDisplayFunc(display1);
 //	glutDisplayFunc(display);
 	glutIdleFunc(motion);
