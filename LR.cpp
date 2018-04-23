@@ -114,51 +114,67 @@ void page2()
     print(380,560,"~~~~~~",fonts[2]);
     glColor3f(0.6,0.3,0.7);
    
-    print(100,400,"1 -> Logistic Regresion",fonts[2]);
+    print(100,400,"1 -> Information",fonts[2]);
     print(100,350,"2 -> Simulation",fonts[2]);
-   // print(100,300,"3 -> Start",fonts[2]);
     print(100,300,"3 -> Quit",fonts[2]);
     print(400,150," Press 'b' to go back",fonts[2]);
 }
 
 void page3()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
-    glColor3f(1.0,0.0,0.0);
-    glBegin(GL_LINES);
-    glColor3f(0.0,0.0,0.0);
-    glVertex2f(0.0,50.0);
-    glVertex2f(1000.0,50.0);
-    glEnd();
-    glBegin(GL_POLYGON);
-    glColor3f(0.0,0.1,0.5);
-    glVertex2f(10.0,50.0);
-    glVertex2f(30.0,50.0);
-    glVertex2f(30.0,100.0);
-    glVertex2f(10.0,100.0);
-    glEnd();
-    glBegin(GL_POLYGON);
-    glColor3f(0.5,0.6,0.5);
-    glVertex2f(10.0,100.0);
-    glVertex2f(30.0,100.0);
-    glVertex2f(30.0,150.0);
-    glVertex2f(10.0,150.0);
-    glEnd();
-    glBegin(GL_POLYGON);
-    glColor3f(0.6,0.2,0.0);
-    glVertex2f(10.0,150.0);
-    glVertex2f(30.0,150.0);
-    glVertex2f(30.0,200.0);
-    glVertex2f(10.0,200.0);
-    glEnd();
-    glBegin(GL_LINES);
-    glColor3f(0.0,0.0,0.0);
-    glVertex2f(10.0,100.0);
-    glVertex2f(30.0,100.0);
-    glVertex2f(30.0,150.0);
-    glVertex2f(10.0,150.0);
-    glEnd();
-    glFlush();
+
+    glColor3f(0.8,0.1,0.2);
+    print(450, 580, "Information",fonts[2]);
+
+    glColor3f(0.6,0.3,0.7);
+    print(100,500,"Logistic regression is a technique borrowed by machine learning from the field of statistics.",fonts[2]);
+    print(100,475,"It is the go-to method for binary classification problems (problems with two class values).",fonts[2]);
+    print(100,425,"Logistic regression is like linear regression in that the goal is to find the values for the coefficients that",fonts[2]);
+    print(100,400,"weight each input variable.",fonts[2]);
+    print(100,375,"Unlike linear regression, the prediction for the output is transformed using a non-linear function called the",fonts[2]);
+    print(100,350,"logistic function.",fonts[2]);
+    print(100,300,"The logistic function looks like a big S and will transform any value into the range 0 to 1.",fonts[2]);
+    print(100,275,"This is useful because we can apply a rule to the output of the logistic function to snap values to 0 and 1 (e.g. IF",fonts[2]);
+    print(100,250,"less than 0.5 then output 1) and predict a class value.",fonts[2]);
+    print(400,100," Press 'b' to go back",fonts[2]);
+
+
+    // glClear(GL_COLOR_BUFFER_BIT);
+    // glColor3f(1.0,0.0,0.0);
+    // glBegin(GL_LINES);
+    // glColor3f(0.0,0.0,0.0);
+    // glVertex2f(0.0,50.0);
+    // glVertex2f(1000.0,50.0);
+    // glEnd();
+    // glBegin(GL_POLYGON);
+    // glColor3f(0.0,0.1,0.5);
+    // glVertex2f(10.0,50.0);
+    // glVertex2f(30.0,50.0);
+    // glVertex2f(30.0,100.0);
+    // glVertex2f(10.0,100.0);
+    // glEnd();
+    // glBegin(GL_POLYGON);
+    // glColor3f(0.5,0.6,0.5);
+    // glVertex2f(10.0,100.0);
+    // glVertex2f(30.0,100.0);
+    // glVertex2f(30.0,150.0);
+    // glVertex2f(10.0,150.0);
+    // glEnd();
+    // glBegin(GL_POLYGON);
+    // glColor3f(0.6,0.2,0.0);
+    // glVertex2f(10.0,150.0);
+    // glVertex2f(30.0,150.0);
+    // glVertex2f(30.0,200.0);
+    // glVertex2f(10.0,200.0);
+    // glEnd();
+    // glBegin(GL_LINES);
+    // glColor3f(0.0,0.0,0.0);
+    // glVertex2f(10.0,100.0);
+    // glVertex2f(30.0,100.0);
+    // glVertex2f(30.0,150.0);
+    // glVertex2f(10.0,150.0);
+    // glEnd();
+    // glFlush();
 }
 
 void page4()
