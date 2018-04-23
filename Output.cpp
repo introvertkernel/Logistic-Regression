@@ -42,7 +42,7 @@ float x,y,u,blend;
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	// To draw points
-	glColor3f(0.0,1.0,0.0);
+	glColor3f(1.0,0.0,0.0);
 	glPointSize(3);
     glBegin(GL_POINTS);
         glVertex2f(80, 34);
@@ -55,15 +55,41 @@ float x,y,u,blend;
 		glVertex2f(86, 56);
 		glVertex2f(82, 54);
 		glVertex2f(56, 69);
+
+		glVertex2f(32, 34);
+		glVertex2f(24, 24);
+		glVertex2f(27, 47);
+		glVertex2f(36, 26);
+		glVertex2f(25, 68);
+		glVertex2f(38, 54);
+		glVertex2f(27, 69);
+
+		glVertex2f(24, 87);
+		glVertex2f(27, 94);
+		glVertex2f(25, 82);
+		glVertex2f(27, 87);
+		glVertex2f(16, 84);
+	    glVertex2f(13, 69);
+		glVertex2f(16, 56);
+	    glVertex2f(13, 24);
+
+		glVertex2f(48, 35);
+		glVertex2f(38, 96);
+		glVertex2f(36, 84);
+		glVertex2f(32, 67);
+		glVertex2f(48, 79);		
+		
 	glEnd();
 
-	glColor3f(1.0,0.0,0.0);
+	glColor3f(0.0,1.0,0.0);
 	glPointSize(3);
 	glBegin(GL_POINTS);
 		glVertex2f(34, 38);
 		glVertex2f(46, 35);
 		glVertex2f(56, 69);
 		glVertex2f(43, 47);
+
+		
 
 	glEnd();
 		// Simple try
@@ -143,6 +169,7 @@ int main(int argc, char ** argv)
 	glutInitWindowSize(320,300);
 
 	glutCreateWindow("Logistic Function");
+	glutFullScreen();
 	glutDisplayFunc(display1);
 //	glutDisplayFunc(display);
 	glutIdleFunc(motion);
