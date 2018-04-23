@@ -1,4 +1,3 @@
-#include "Output.h"
 #include<GL/glut.h>
 #include<math.h>
 #include<stdio.h>
@@ -136,8 +135,10 @@ void motion(void)
 	}
 	glutPostRedisplay();
 }
-int function()
+
+int main(int argc, char ** argv)
 {
+	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
 	glutInitWindowSize(320,300);
 
@@ -150,16 +151,8 @@ int function()
 	s1x=-1;s1y=-1;s2x=-1;s2y=1;
 	glutMainLoop();
 	return 0;
-
 }
-// int main(int argc, char ** argv)
-// {
-// 	glutInit(&argc,argv);
-// 	function();	
 
-
-// 	return 0;
-// }
 
 /*
 1. In main calling glutDisplayFunc more than 0nce works
